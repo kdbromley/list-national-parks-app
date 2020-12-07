@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Cantata+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cantata+One&family=Montserrat&display=swap');
+
+body { background-color: rgb(241, 201, 165); }
+
+header {
+    font-family: 'Cantata One', 'Cambria', Georgia, Times, serif;
+    color: whitesmoke;
+    background-color: brown;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+body { font-family: 'Montserrat', 'Lucida Sans', 'Open Sans', sans-serif; }
+
+main { padding: 20px; }
+
+form {
+    border: 1px double grey;
+    padding: 10px;
+}
+
+legend, fieldset, button { margin: 5px; }
+
+button { padding: 5px; }
+
+input {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.hidden { display: none; }
+
+@media all and (min-width: 700px) {
+    main {
+        padding-right: 10%;
+        padding-left: 10%;
+    }
+    
+    form { padding: 20px; }
+
+    legend, fieldset { margin: 12px }
+
+    input { margin-bottom: 12px; }
+
+    h3 { font-size: 22px; }
+}
+
