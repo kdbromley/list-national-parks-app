@@ -32,6 +32,11 @@ input {
 
 .hidden { display: none; }
 
+.error-message {
+    color: darkred;
+    font-size: 20px;
+}
+
 @media all and (min-width: 700px) {
     main {
         padding-right: 10%;
