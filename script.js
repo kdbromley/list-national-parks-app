@@ -2,6 +2,7 @@ const apiKey = 'PQ7q59BDNRjuJthl0zQabCtFJmoP9lfgpchSdAeB';
 const searchURL = 'https://developer.nps.gov/api/v1/parks'
 
 function displayParksList(responseJson) {
+    console.log(reponseJson)
     $('.results-list').empty();
     for (let i = 0; i < responseJson.data.length; i++) {
         $('.results-list').append(`
@@ -20,17 +21,13 @@ function formatQueryParams(params) {
 }
 
 function getParksList(state, maxResults=10) {
-    //const params
     const params = {
         api_key: apiKey,
         stateCode: state,
         limit: maxResults
     };
-    //const queryString - pass params to formatQParams
     const queryString = formatQueryParams(params);
-    //const url
     const url = searchURL + '?' + queryString;
-    //fetch
     fetch(url)
         .then(response => {
             if (response.ok) {
