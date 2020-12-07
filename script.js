@@ -2,7 +2,7 @@ const apiKey = 'PQ7q59BDNRjuJthl0zQabCtFJmoP9lfgpchSdAeB';
 const searchURL = 'https://developer.nps.gov/api/v1/parks'
 
 function displayParksList(responseJson) {
-    console.log(reponseJson)
+    console.log(responseJson)
     $('.results-list').empty();
     for (let i = 0; i < responseJson.data.length; i++) {
         $('.results-list').append(`
