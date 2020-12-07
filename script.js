@@ -2,14 +2,20 @@ const apiKey = 'PQ7q59BDNRjuJthl0zQabCtFJmoP9lfgpchSdAeB';
 const searchURL = 'https://developer.nps.gov/api/v1/parks'
 
 function displayParksList(responseJson) {
-    //empty results
-    //for loop through response
-    //remove hidden class
+    $('.results-list').empty();
+    for (let i = 0; i < responseJson.data.length; i++) {
+        $('.results-list').append(`
+        <li><h4><a href=${responseJson.data[i].url}>${responseJson.data[i].fullName}</a></h4>
+        <p>${responseJson.data[i].description}</p>
+        <p>Visit this parks website: <a href=${responseJson.data[i].url}>${responseJson.data[i].url}</a></p>
+        </li>`)
+    }
+    $('.results').removeClass('hidden');
 }
 
 function formatQueryParams(params) {
     const queryItems = Object.keys(params)
-        .map(key => `${encodeURICompnent(key)}=${encodeURICompnent(params[key])}`);
+        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
     return queryItems.join('&');
 }
 
@@ -32,7 +38,7 @@ function getParksList(state, maxResults=10) {
             }
             throw new Error(response.statusText);
         })
-        .then(responseJson => console.log(responseJson))  //displayParksList(responseJson)
+        .then(responseJson => displayParksList(responseJson))
         .catch(err => {
             $('.js-error-message').text(`Uh oh! An error occured: ${err.message}`);
         });

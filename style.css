@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cantata+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cantata+One&family=Montserrat&display=swap');
 
-body { background-color: rgb(241, 201, 165); }
+body { background-color: rgb(255, 217, 184); }
 
 header {
     font-family: 'Cantata One', 'Cambria', Georgia, Times, serif;
     color: whitesmoke;
-    background-color: brown;
+    background-color: rgb(138, 36, 36);
     margin: 0;
     padding: 20px;
     text-align: center;
@@ -29,6 +29,11 @@ input {
     display: block;
     margin-bottom: 8px;
 }
+
+a:link { color: rgb(43, 70, 1); }
+a:visited { color: brown}
+a:hover { color: rgb(114, 161, 110) }
+a:active { color: black}
 
 .hidden { display: none; }
 
