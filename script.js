@@ -1,3 +1,5 @@
+'use strict';
+
 const apiKey = 'PQ7q59BDNRjuJthl0zQabCtFJmoP9lfgpchSdAeB';
 const searchURL = 'https://developer.nps.gov/api/v1/parks'
 
@@ -16,18 +18,16 @@ function displayParksList(responseJson) {
 }
 
 function formatQueryParams(params) {
-    const queryItems = Object.keys(params.stateCode)
-        .map(key => `stateCode=${encodeURIComponent(params.stateCode[key])}`);
-    queryItems.push((Object.keys(params.strings).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params.strings[key])}`)).join('&')); 
-    return queryItems.join('&');
+    const queryItems = Object.keys(params)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`); 
+    return queryItems.join('&').replaceAll(/%2C/g, ',');
 }
 
 function getParksList(states, maxResults=10) {
     const params = {
-        strings: {
-          api_key: apiKey,
-          limit: maxResults },
-       stateCode: states,
+        api_key: apiKey,
+        limit: maxResults,
+       stateCode: [states],
     };
     const queryString = formatQueryParams(params);
     const url = searchURL + '?' + queryString;
@@ -50,9 +50,8 @@ function watchForm() {
     $('.js-form').submit(event => {
         event.preventDefault();
         const searchTerm = $('#js-search-term').val();
-        const searchTermArray = searchTerm.split(',');
         const maxResults = $('#js-max-results').val();
-        getParksList(searchTermArray, maxResults);
+        getParksList(searchTerm, maxResults);
     })
 }
 
